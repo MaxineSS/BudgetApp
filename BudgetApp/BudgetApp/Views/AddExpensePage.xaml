@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:BudgetApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="BudgetApp.Views.AddExpensePage"
+             Title="Enter New Expense">
+    <ContentPage.BindingContext>
+        <local:Expense/>
+    </ContentPage.BindingContext>
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+
+            <Frame Margin="20,0,20,5" BorderColor="#B2B2B2" Padding="0" CornerRadius="10">
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="0"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="tab_budget.png" HeightRequest="35" WidthRequest="35"
+                       VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.5"/>
+                    <Entry x:Name="name_entry"
+                       Text="{Binding Name}" Opacity="0.5"
+                       ClearButtonVisibility="WhileEditing"
+                       Placeholder="Name" BackgroundColor="Transparent" Grid.Column="2" 
+                       FontSize="20" TextColor="#051855"
+                       VerticalOptions="Center" Margin="0,10,10,10"/>
+                </Grid>
+            </Frame>
+
+            <Frame Margin="20,0,20,5" BorderColor="#B2B2B2" Padding="0" CornerRadius="10">
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="0"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="icon_calendar.png" HeightRequest="35" WidthRequest="35"
+                       VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.5"/>
+                    <Entry x:Name="DateEntry"
+                       Text="{Binding Date}" Opacity="0.5"
+                       ClearButtonVisibility="WhileEditing"
+                       Placeholder="Name" BackgroundColor="Transparent" Grid.Column="2" 
+                       FontSize="20" TextColor="#051855"
+                       VerticalOptions="Center" Margin="0,10,10,10"/>
+
+                </Grid>
+            </Frame>
+
+
+
+            <Frame Margin="20,0,20,5" BorderColor="#B2B2B2" Padding="0" CornerRadius="10">
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="0"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="icon_category.png" HeightRequest="35" WidthRequest="35"
+                           VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.5"/>
+
+                    <Label  x:Name="category_entry"
+                            Opacity="0.5"
+                            BackgroundColor="Transparent" Grid.Column="2" FontSize="20" 
+                            TextColor="#051855"
+                            VerticalOptions="Center" Margin="0,10,10,10"/>
+                    <Picker x:Name="CategoryPicker" SelectedItem="{Binding Category}" VerticalOptions="Center" FontSize="16" HorizontalOptions="Fill" 
+                            IsEnabled="True" IsVisible="True" Grid.Column="2">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Food</x:String>
+                                <x:String>Transportation</x:String>
+                                <x:String>Household</x:String>
+                                <x:String>Health</x:String>
+                                <x:String>Education</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+
+                    <!--<Entry  x:Name="category_entry"
+                            Text="{Binding Category}" Placeholder="Category" Opacity="0.5"  BackgroundColor="Transparent" Grid.Column="2" FontSize="20" TextColor="#051855"
+                            VerticalOptions="Center" Margin="0,10,10,10"/>
+                    <Picker ItemsSource="{Binding ExpenseCategory}" IsEnabled="True" IsVisible="True"/>-->
+
+                </Grid>
+            </Frame>
+            <Frame Margin="20,0,20,5" BorderColor="#B2B2B2" Padding="0" CornerRadius="10">
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="0"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="icon_amount.png" HeightRequest="35" WidthRequest="35"
+                       VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.5"/>
+                    <Entry  x:Name="amount_entry"
+                            Text="{Binding Amount}" Opacity="0.5"
+                            Placeholder="Amount" BackgroundColor="Transparent" Grid.Column="2" FontSize="20" TextColor="#051855"
+                            VerticalOptions="Center" Margin="0,10,10,10"/>
+                </Grid>
+            </Frame>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,30,0,0">
+                <Button Text="Save" Clicked="SaveButton_Clicked" WidthRequest="150" TextColor="White" BackgroundColor="#2296f3" CornerRadius="20"/>
+                <Button Text="Cancel" Clicked="CancelButton_Clicked"  WidthRequest="150" TextColor="White" BackgroundColor="#2296f3" CornerRadius="20"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
